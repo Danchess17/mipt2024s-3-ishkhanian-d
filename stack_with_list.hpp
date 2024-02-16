@@ -17,33 +17,36 @@ class StackWithList {
  public:
   StackWithList() : head(nullptr), length(0) {}
 
-  StackWithList(const StackWithList<T>& s) : head(nullptr), length(0) {
-      Node<T>* temp = s.head;
-      while (temp != nullptr) {
-          push(temp->element);
-          temp = temp->next;
-      }
+  StackWithList(const StackWithList<T>& s) : head(nullptr), length(s.length) {
+    if (s.head == nullptr) return;
+    head = new Node<T>(s.head->element);
+    Node<T>* copy = head;
+    Node<T>* temp = s.head;
+    while (temp->next != nullptr) {
+      temp = temp->next;
+      copy->next = new Node<T>(temp->element);
+      copy = copy->next;
+    }
   }
-
 
   ~StackWithList() = default;
 
-  StackWithList& operator=(const StackWithList<T>& s) { // ok
-       StackWithList stack(s); // todo
-       std::swap(head, stack.head);
-       std::swap(length, stack.length);
-       return *this;
+  StackWithList& operator=(const StackWithList<T>& s) {
+    StackWithList stack(s);
+    std::swap(head, stack.head);
+    std::swap(length, stack.length);
+    return *this;
   }
 
-  StackWithList(StackWithList<T>&& s) noexcept : head(nullptr), length(0) { // ok
-      std::swap(head, s.head);
-      std::swap(length, s.length);
+  StackWithList(StackWithList<T>&& s) noexcept : head(nullptr), length(0) {
+    std::swap(head, s.head);
+    std::swap(length, s.length);
   }
 
-  StackWithList& operator=(StackWithList<T>&& s) noexcept { // ok 
-      std::swap(head, s.head);
-      std::swap(length, s.length);
-      return *this;
+  StackWithList& operator=(StackWithList<T>&& s) noexcept {
+    std::swap(head, s.head);
+    std::swap(length, s.length);
+    return *this;
   }
 
   void push(const T& elem) {
