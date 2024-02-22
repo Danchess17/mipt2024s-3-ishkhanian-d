@@ -4,6 +4,8 @@
 #include <iostream>
 #include <chrono>
 
+#include <fstream>
+
 using cl = std::chrono::high_resolution_clock;
 using ns = std::chrono::nanoseconds;
 
@@ -118,7 +120,7 @@ void Test3() {
 
 void Test4() {
     std::cout << "Test 4" << std::endl;
-    int n = 100000000;
+    int n = 1000000;
 
     auto start_array = cl::now();
     StackArr stack_array;
@@ -164,23 +166,41 @@ void Test5() {
     std::cout << "Test 5" << std::endl;
     int n = 1000000;
 
+    std::ofstream out_array("test5_array.txt");
+
     StackArr stack_array;
-    auto start_array = cl::now();
-    for (int i = 0; i < n; ++i) { 
-        stack_array.Push(5.0);
-    } 
-    auto end_array = cl::now();
-    double array_time = std::chrono::duration_cast<ns>(end_array - start_array).count() * 1e-9;
-    std::cout << "Array push-only time taken by program is : " << array_time << " sec" << std::endl;
+    auto array_time = 0.0;
+    for (int j = 0; j < 100; ++j) {
+        auto begin_push = cl::now();
+        for (int i = 0; i < n / 100; ++i) {
+            stack_array.Push(5.0);
+        }
+        auto end_push = cl::now();
+        array_time += std::chrono::duration_cast<ns>(end_push - 
+        begin_push).count();  
+
+        out_array << array_time << std::endl;
+    }
+ 
+    std::cout << "Array push-only time taken by program is : " << array_time * 1e-9 << " sec" << std::endl;
+
+    std::ofstream out_list("test5_list.txt");
 
     StackLst stack_list;
-    auto start_list = cl::now(); 
-    for (int i = 0; i < n; ++i) { 
-        stack_list.Push(5.0);
-    } 
-    auto end_list = cl::now();
-    double list_time = std::chrono::duration_cast<ns>(end_list - start_list).count() * 1e-9;
-    std::cout << "List push-only time taken by program is : " << list_time << " sec" << std::endl;
+    auto list_time = 0.0;
+    for (int j = 0; j < 100; ++j) {
+        auto begin_push = cl::now();
+        for (int i = 0; i < n / 100; ++i) {
+            stack_list.Push(5.0);
+        }
+        auto end_push = cl::now();
+        list_time += std::chrono::duration_cast<ns>(end_push - 
+        begin_push).count();  
+
+        out_list << list_time << std::endl;
+    }
+
+    std::cout << "List push-only time taken by program is : " << list_time * 1e-9 << " sec" << std::endl;
 
     if (list_time < array_time) {
         std::cout << "Stack-List push is " 
@@ -196,29 +216,48 @@ void Test6() {
     std::cout << "Test 6" << std::endl;
     int n = 1000000;
 
+    std::ofstream out_array("test6_array.txt");
+
     StackArr stack_array;
     for (int i = 0; i < n; ++i) { 
         stack_array.Push(5.0);
     }
-    auto start_array = cl::now();
-    for (int i = 0; i < n; ++i) {
-        stack_array.Pop();
+
+    auto array_time = 0.0;
+    for (int j = 0; j < 100; ++j) {
+        auto begin_push = cl::now();
+        for (int i = 0; i < n / 100; ++i) {
+            stack_array.Pop();
+        }
+        auto end_push = cl::now();
+        array_time += std::chrono::duration_cast<ns>(end_push - 
+        begin_push).count();  
+
+        out_array << array_time << std::endl;
     }
-    auto end_array = cl::now();
-    double array_time = std::chrono::duration_cast<ns>(end_array - start_array).count() * 1e-9;
-    std::cout << "Array pop-only time taken by program is : " << array_time << " sec" << std::endl;
+    std::cout << "Array pop-only time taken by program is : " << array_time * 1e-9 << " sec" << std::endl;
+
+    std::ofstream out_list("test6_list.txt");
 
     StackLst stack_list;
     for (int i = 0; i < n; ++i) { 
         stack_list.Push(5.0);
     }
-    auto start_list = cl::now();
-    for (int i = 0; i < n; ++i) {
-        stack_list.Pop();
+
+    auto list_time = 0.0;
+    for (int j = 0; j < 100; ++j) {
+        auto begin_push = cl::now();
+        for (int i = 0; i < n / 100; ++i) {
+            stack_list.Pop();
+        }
+        auto end_push = cl::now();
+        list_time += std::chrono::duration_cast<ns>(end_push - 
+        begin_push).count();  
+
+        out_list << list_time << std::endl;
     }
-    auto end_list = cl::now();
-    double list_time = std::chrono::duration_cast<ns>(end_list - start_list).count() * 1e-9;
-    std::cout << "List pop-only time taken by program is : " << list_time << " sec" << std::endl;
+
+    std::cout << "List pop-only time taken by program is : " << list_time * 1e-9 << " sec" << std::endl;
 
     if (list_time < array_time) {
         std::cout << "Stack-List pop is " 
