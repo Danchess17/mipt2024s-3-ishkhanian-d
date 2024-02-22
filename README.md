@@ -1,9 +1,9 @@
 # Task 1: Stack
-![screen.png](https://github.com/Danchess17/mipt2024s-3-ishkhanian-d/tree/main/screen.png)
-![push1.png](https://github.com/Danchess17/mipt2024s-3-ishkhanian-d/tree/main/push1.png)
-![push1.png](https://github.com/Danchess17/mipt2024s-3-ishkhanian-d/tree/main/push2.png)
-![pop1.png](https://github.com/Danchess17/mipt2024s-3-ishkhanian-d/tree/main/pop1.png)
-![pop2.png](https://github.com/Danchess17/mipt2024s-3-ishkhanian-d/tree/main/pop2.png)
+![screen.png](https://github.com/Danchess17/mipt2024s-3-ishkhanian-d/blob/main/screen.png)
+![push1.png](https://github.com/Danchess17/mipt2024s-3-ishkhanian-d/blob/main/push1.png)
+![push1.png](https://github.com/Danchess17/mipt2024s-3-ishkhanian-d/blob/main/push2.png)
+![pop1.png](https://github.com/Danchess17/mipt2024s-3-ishkhanian-d/blob/main/pop1.png)
+![pop2.png](https://github.com/Danchess17/mipt2024s-3-ishkhanian-d/blob/main/pop2.png)
 ### Выводы:
 1) Тест 1 показал, что конструктор стека на списке быстрее конструктора на массиве (с дефолтной capacity = 8) в 10 раз.
 2) Тесты 2, 3, 4, 6, 7 показали, что функции push, pop, top (по отдельности) работают быстрее для массива, чем соответствующие для списка.
