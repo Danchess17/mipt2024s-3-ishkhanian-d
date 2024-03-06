@@ -10,6 +10,7 @@ public:
   StackLst& operator=(const StackLst& st);
   StackLst& operator=(StackLst&& st) noexcept;
   const float& Top() const;
+  float& Top();
   void Push(const float& elem);
   void Pop() noexcept;
   bool IsEmpty() const noexcept;

@@ -1,8 +1,5 @@
 #include <stacklst/stacklst.hpp>
-
 #include <iostream>
-//#include <algorithm>
-//#include <stdexcept>
 
 StackLst::Node::Node(const float &elem) : element(elem), next(nullptr) {}
 
@@ -44,6 +41,14 @@ StackLst& StackLst::operator=(StackLst&& st) noexcept {
 }
 
 const float& StackLst::Top() const {
+    if (head == nullptr) {
+      std::cout << "Error: taking top element from empty stack..." << std::endl;
+      exit(1);
+    }
+    return head->element;
+}
+
+float& StackLst::Top() {
     if (head == nullptr) {
       std::cout << "Error: taking top element from empty stack..." << std::endl;
       exit(1);

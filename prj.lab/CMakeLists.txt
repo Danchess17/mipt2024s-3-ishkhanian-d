@@ -1,2 +1,4 @@
 add_subdirectory(stackarr)
 add_subdirectory(stacklst)
+add_subdirectory(templ_stackarr)
+add_subdirectory(templ_stacklst)

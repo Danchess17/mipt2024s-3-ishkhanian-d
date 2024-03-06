@@ -1,8 +1,5 @@
 #include <stackarr/stackarr.hpp>
-
 #include <iostream>
-//#include <algorithm>
-//#include <stdexcept>
 
 StackArr::StackArr(int cap) : length(0), capacity(cap) {
     stack = new float[cap]; 
@@ -43,7 +40,7 @@ StackArr& StackArr::operator=(StackArr&& st) noexcept {
     std::swap(capacity, st.capacity);
     std::swap(stack, st.stack);
     return *this;
-  }
+}
 
 const float& StackArr::Top() const {
     if (length == 0) {
@@ -51,7 +48,15 @@ const float& StackArr::Top() const {
       exit(1);
     }
     return stack[length - 1];
-  }
+}
+
+float& StackArr::Top() {
+    if (length == 0) {
+      std::cout << "Error: taking top element from empty stack..." << std::endl;
+      exit(1);
+    }
+    return stack[length - 1];
+}
 
 void StackArr::Push(const float& elem) {
     if (length == capacity) {

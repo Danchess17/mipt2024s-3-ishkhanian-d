@@ -10,6 +10,7 @@ public:
   StackArr& operator=(const StackArr& st);
   StackArr& operator=(StackArr&& st) noexcept;
   const float& Top() const;
+  float& Top();
   void Push(const float& elem);
   void Pop() noexcept;
   bool IsEmpty() const noexcept;
