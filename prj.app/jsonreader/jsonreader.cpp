@@ -78,9 +78,9 @@ class sax_event_consumer : public json::json_sax_t {
 };
 
 
-void DomProfiler() {
+void DomProfiler(const std::string& path) {
     auto start = cl::now(); 
-    std::fstream file("data-small.json");
+    std::fstream file(path);
     json j = json::parse(file);
     file.close();
     auto end = cl::now(); 
@@ -89,9 +89,9 @@ void DomProfiler() {
     //std::cout << j.dump(1);
 }
 
-void SaxProfiler() {
+void SaxProfiler(const std::string& path) {
     auto start = cl::now(); 
-    std::fstream file("data-small.json");
+    std::fstream file(path);
     sax_event_consumer sec;
     bool result = json::sax_parse(file, &sec);
     file.close();
@@ -104,9 +104,9 @@ void SaxProfiler() {
     // std::cout << "\nresult: " << std::boolalpha << result << std::endl; 
 }
 
-void ChunksProfiler() {
+void ChunksProfiler(const std::string& path) {
     auto start = cl::now(); 
-    std::fstream file("data-small.json");
+    std::fstream file(path);
     file.seekg(1);
     char* buffer = new char[chunk_size];
     while (buffer[chunk_size - 1] != ']') {
@@ -120,9 +120,9 @@ void ChunksProfiler() {
     - start).count() * 1e-9 << " sec" << std::endl;
 }
 
-void StringProfiler() {
+void StringProfiler(const std::string& path) {
     auto start = cl::now(); 
-    std::fstream file("data-small.json");
+    std::fstream file(path);
     std::string s;
     file >> s;
     int i = 1;
@@ -135,10 +135,16 @@ void StringProfiler() {
      - start).count() * 1e-9 << " sec" << std::endl;
 }
 
-int main() {
-    DomProfiler();
-    SaxProfiler();
-    ChunksProfiler();
-    StringProfiler();
+int main(int argc, char* argv[]) {
+    if (argc < 2) {
+        std::cout << "Not enough arguments...\nPath to file should be in arguments!" << std::endl;
+        exit(1);
+    }
+
+    std::string path = argv[1];
+    DomProfiler(path);
+    SaxProfiler(path);
+    ChunksProfiler(path);
+    StringProfiler(path);
     return 0;
 }
