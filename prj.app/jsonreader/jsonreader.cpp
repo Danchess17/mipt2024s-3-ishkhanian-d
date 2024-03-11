@@ -138,7 +138,7 @@ void StringProfiler(const std::string& path) {
 int main(int argc, char* argv[]) {
     if (argc < 2) {
         std::cout << "Not enough arguments...\nPath to file should be in arguments!" << std::endl;
-        std::cout << "Example: ./jsonreader ../../jsondata/data-small.json" << std::endl;
+        std::cout << "Example: ./jsonreader ../jsondata/data-small.json" << std::endl;
         exit(1);
     }
 
