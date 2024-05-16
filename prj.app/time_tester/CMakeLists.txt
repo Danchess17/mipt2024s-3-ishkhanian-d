@@ -1,0 +1,3 @@
+add_executable(time_tester time_tester.cpp)
+target_link_libraries(time_tester timer stackarr)
+target_link_libraries(time_tester timer stacklst)
