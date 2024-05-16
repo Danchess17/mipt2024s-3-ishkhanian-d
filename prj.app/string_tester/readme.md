@@ -1,0 +1,2 @@
+![stringtester1.png](https://github.com/Danchess17/mipt2024s-3-ishkhanian-d/blob/main/png/stringtester1.png)
+![stringtester2.png](https://github.com/Danchess17/mipt2024s-3-ishkhanian-d/blob/main/png/stringtester2.png)
