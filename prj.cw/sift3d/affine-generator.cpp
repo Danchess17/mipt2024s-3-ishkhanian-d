@@ -16,7 +16,8 @@ int main() {
     char buffer[1024];
     int dataset_size;
     if (affine_mode == 'T') {
-        mkdir("translations", 0777); // not sure it will work for Windows
+        std::filesystem::create_directory("translations");
+        //mkdir("translations", 0777); // not sure it will work for Windows
         int x, y, z;
         std::cout << "Enter x, y, z:\n";
         std::cin >> x >> y >> z;
@@ -25,7 +26,8 @@ int main() {
         system(buffer);
     }
     else if (affine_mode == 'R') {
-        mkdir("rotations", 0777);
+        std::filesystem::create_directory("translations");
+        // mkdir("rotations", 0777);
         // std::cout << "Enter amount of NIFTI files you want to generate:\n";
         // std::cin >> dataset_size;
 
