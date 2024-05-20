@@ -8,7 +8,7 @@ if len(sys.argv) < 2:
 deg = int(sys.argv[1])
 
 # Загрузка nii файла
-image = tio.ScalarImage('rotated_by_deg/1_rotated_by_{}.nii.gz') # RAS+
+image = tio.ScalarImage('../prj.cw/sift3d/1.nii.gz') # RAS+
 
 # Поворот изображения на deg градусов вокруг оси x
 transform = tio.Affine(scales=(1,), degrees=(deg, 0, 0), translation=(0, 0, 0), center='origin')
@@ -20,5 +20,5 @@ transformed_image = transform(image)
 transformation_matrix = transformed_image['affine']
 
 # Сохранение получившегося nii файла
-transformed_image.save('rotated_by_deg/1_rotated_by_{}.nii.gz'.format(deg))
+transformed_image.save('rotations/1_rotated_by_{}.nii.gz'.format(deg))
 
