@@ -1,4 +1,4 @@
-CHECK: 20240523-155018
+CHECK: 20240523-174508
 STATUS: lab stackarr - test-failed
 STATUS: lab stackarrt - test-ok
 STATUS: lab stacklst - test-failed
