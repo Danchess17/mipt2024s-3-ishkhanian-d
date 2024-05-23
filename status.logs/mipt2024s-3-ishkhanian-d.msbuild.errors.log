@@ -1,1 +1,1 @@
-    20>D:\projects\mipt2024s-3-check\mipt2024s-3-ishkhanian-d\prj.app\jsonreader\jsonreader.cpp(79,24): error C2259: 'sax_event_consumer': cannot instantiate abstract class [D:\projects\mipt2024s-3-check\mipt2024s-3-ishkhanian-d\build.check\prj.app\jsonreader\jsonreader.vcxproj]
+    12>D:\projects\mipt2024s-3-check\mipt2024s-3-ishkhanian-d\prj.app\jsonreader\jsonreader.cpp(79,24): error C2259: 'sax_event_consumer': cannot instantiate abstract class [D:\projects\mipt2024s-3-check\mipt2024s-3-ishkhanian-d\build.check\prj.app\jsonreader\jsonreader.vcxproj]
