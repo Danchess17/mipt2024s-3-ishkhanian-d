@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
             return 0;
         }
         std::filesystem::create_directory("rotations");
-        std::cout << deg;
+        int deg = atoi(argv[2]);
 
         snprintf(buffer, sizeof(buffer), "python3 ../prj.cw/sift3d/rotator.py %d", deg);
         system(buffer);
